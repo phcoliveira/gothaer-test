@@ -3,17 +3,17 @@ import * as firebase from 'firebase';
 import * as firebaseui from 'firebaseui';
 
 @Component({
-  selector: 'app-authentication',
-  templateUrl: './authentication.component.html',
-  styleUrls: ['./authentication.component.scss']
+  selector: 'authentication-index-entry',
+  templateUrl: './index-entry.component.html',
+  styleUrls: ['./index-entry.component.scss']
 })
-export class AuthenticationComponent implements OnInit {
+export class IndexEntryComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
     const uiConfig = {
-      signInSuccessUrl: '/to-be-defined',
+      signInSuccessUrl: '/customers/dashboard',
       signInOptions: [
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
       ],
@@ -27,4 +27,5 @@ export class AuthenticationComponent implements OnInit {
 
     ui.start('#firebase-ui-auth-container', uiConfig);
   }
+
 }

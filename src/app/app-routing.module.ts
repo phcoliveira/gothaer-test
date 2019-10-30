@@ -1,12 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthenticationComponent } from './pages/authentication/authentication.component';
-
-export const pages = [
-  AuthenticationComponent,
-];
-
 const routes: Routes = [
   {
     path: '',
@@ -15,12 +9,16 @@ const routes: Routes = [
   },
   {
     path: 'authentication',
-    component: AuthenticationComponent
+    loadChildren: './authentication/authentication.module#AuthenticationModule',
+  },
+  {
+    path: 'customers',
+    loadChildren: './customers/customers.module#CustomersModule',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

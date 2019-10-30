@@ -4,16 +4,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { FlexLayoutModule } from '@angular/flex-layout';
   
 import { environment } from '../environments/environment';
-import { AppRoutingModule, pages } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { CustomersModule } from './customers/customers.module';
   
 @NgModule({
   declarations: [
     AppComponent,
-    ...pages,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +22,8 @@ import { AppComponent } from './app.component';
     AngularFirestoreModule,
     AppRoutingModule,
     NoopAnimationsModule,
-    FlexLayoutModule,
+    AuthenticationModule,
+    CustomersModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
