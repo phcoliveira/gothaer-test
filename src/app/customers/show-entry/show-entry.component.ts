@@ -1,7 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import * as firebase from 'firebase';
+import { Component, OnInit } from '@angular/core'
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
+import { Observable } from 'rxjs'
+import { Router } from '@angular/router'
+import * as firebase from 'firebase'
+
+export interface Customer {
+  name: 'string',
+  membership_type: 'string',
+  password: 'string',
+  age: 'string',
+  selected_insurances: 'array',
+}
 
 @Component({
   selector: 'app-show-entry',
@@ -9,10 +18,11 @@ import * as firebase from 'firebase';
   styleUrls: ['./show-entry.component.scss']
 })
 export class ShowEntryComponent implements OnInit {
-  customer: Observable<any>;
+  private customerDoc: AngularFirestoreDocument<Customer>
+  customer: Observable<Customer>
 
-  constructor(db: AngularFirestore) {
-    firebase.auth().onAuthStateChanged(this.handleAuthStateChange);
+  constructor(private db: AngularFirestore, private router: Router) {
+    firebase.auth().onAuthStateChanged(this.handleAuthStateChange.bind(this))
   }
 
   ngOnInit() {
@@ -20,7 +30,14 @@ export class ShowEntryComponent implements OnInit {
 
   handleAuthStateChange(user) {
     if (user) {
-      console.log({ user });
+      const { uid } = user;
+
+      console.log({ uid })
+      this.customerDoc = this.db.doc<Customer>(`customers/${uid}`);
+      this.customer = this.customerDoc.valueChanges();
+    } else {
+      console.log('nope')
+      this.router.navigate(['authentication'])
     }
   }
 
