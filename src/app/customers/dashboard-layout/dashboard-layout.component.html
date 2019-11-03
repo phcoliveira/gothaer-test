@@ -1,4 +1,4 @@
-<ng-container *ngIf="customer | async as _customer">
+<ng-container *ngIf="customer">
   <div fxLayout="column" fxFlexFill fxLayoutAlign="start start">
     <mat-toolbar color="primary" fxFlex="0 0 auto">
       <span>Gothaer Digital</span>
@@ -18,7 +18,9 @@
         [fixedBottomGap]="0"
       >
         <div fxLayout="row" fxLayoutAlign="center start">
-          <strong>Welcome {{ _customer.name }}</strong>
+          <p>
+            <strong>Welcome {{ customer.name }}</strong>
+          </p>
 
         </div>
 
@@ -59,7 +61,7 @@
       </mat-sidenav>
   
       <mat-sidenav-content>
-        <h1>Coisa</h1>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

@@ -1,14 +1,28 @@
-import { Routes } from '@angular/router';
+import { Routes } from '@angular/router'
 
-import { ShowEntryComponent } from './show-entry/show-entry.component';
+import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component'
+import { MembershipsEntryComponent } from './memberships-entry/memberships-entry.component'
 
 export const entries = [
-  ShowEntryComponent,
-];
+  DashboardLayoutComponent,
+  MembershipsEntryComponent,
+]
 
-export const AuthenticationRoutes : Routes = [
+export const CustomersRoutes : Routes = [
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+    
+  },
   {
     path: 'dashboard',
-    component: ShowEntryComponent,
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path: 'memberships',
+        component: MembershipsEntryComponent,
+      }
+    ]
   },
-];
+]

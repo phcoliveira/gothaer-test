@@ -1,14 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { BrowserModule } from '@angular/platform-browser'
+import { NgModule } from '@angular/core'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
   
-import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AuthenticationModule } from './authentication/authentication.module';
+import { environment } from '../environments/environment'
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { AuthenticationModule } from './authentication/authentication.module'
 import { CustomersModule } from './customers/customers.module';
   
 @NgModule({
@@ -18,8 +17,7 @@ import { CustomersModule } from './customers/customers.module';
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFireAuthGuardModule,
     AppRoutingModule,
     NoopAnimationsModule,
     AuthenticationModule,

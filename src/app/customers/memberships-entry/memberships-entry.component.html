@@ -1,0 +1,7 @@
+<h1>Our membership plans:</h1>
+
+<div fxFlexLayout="rows" fxFlexFill>
+  <mat-card *ngFor="let membership of memberships | async">
+    <mat-card-title>{{ membership.level }}</mat-card-title>
+  </mat-card>
+</div>
