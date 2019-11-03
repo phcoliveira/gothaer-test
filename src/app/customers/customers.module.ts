@@ -10,7 +10,8 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule } from '@angular/material/list'
 import { MatCardModule } from '@angular/material/card'
 
-import { CustomersRoutes, entries } from './customers.routes';
+import { SharedModule } from '../shared/shared.module'
+import { CustomersRoutes, entries, resolvers } from './customers.routes'
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CustomersRoutes, entries } from './customers.routes';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     FlexLayoutModule,
     RouterModule.forChild(CustomersRoutes),
     AngularFireModule,
@@ -28,5 +30,8 @@ import { CustomersRoutes, entries } from './customers.routes';
     MatListModule,
     MatCardModule,
   ],
+  providers: [
+    ...resolvers
+  ]
 })
 export class CustomersModule { }

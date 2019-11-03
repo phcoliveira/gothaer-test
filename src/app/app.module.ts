@@ -7,8 +7,10 @@ import { AngularFireAuthGuardModule } from '@angular/fire/auth-guard'
 import { environment } from '../environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { SharedModule } from './shared/shared.module'
 import { AuthenticationModule } from './authentication/authentication.module'
 import { CustomersModule } from './customers/customers.module';
+import { MembershipsModule } from './memberships/memberships.module'
   
 @NgModule({
   declarations: [
@@ -16,14 +18,15 @@ import { CustomersModule } from './customers/customers.module';
   ],
   imports: [
     BrowserModule,
+    SharedModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthGuardModule,
     AppRoutingModule,
     NoopAnimationsModule,
     AuthenticationModule,
     CustomersModule,
+    MembershipsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

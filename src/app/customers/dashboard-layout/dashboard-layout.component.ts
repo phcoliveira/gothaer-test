@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Subject } from 'rxjs'
-import { takeUntil } from 'rxjs/operators'
+import { ActivatedRoute } from '@angular/router'
+// import { Subject } from 'rxjs'
+// import { takeUntil } from 'rxjs/operators'
 
-import { CustomerService } from '../customer.service'
+// import { CustomerService } from '../customer.service'
 import { Customer } from '../customer.model'
 
 @Component({
@@ -11,24 +12,28 @@ import { Customer } from '../customer.model'
   styleUrls: ['./dashboard-layout.component.scss'],
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
-  public customer: Customer|null
+  public customer: Customer
 
-  private subscriptions: Subject<void> = new Subject<void>()
+  // private subscriptions$: Subject<void> = new Subject<void>()
 
   constructor(
-    private heroService: CustomerService
+    // private heroService: CustomerService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.heroService.customer
-      .pipe(takeUntil(this.subscriptions))
-      .subscribe((customer: Customer|null) => {
-        this.customer = customer
-      })
+    const { customer } = this.route.snapshot.data
+
+    this.customer = customer
+    // this.heroService.customer$
+    //   .pipe(takeUntil(this.subscriptions$))
+    //   .subscribe((customer: Customer) => {
+    //     this.customer = customer
+    //   })
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.next()
-    this.subscriptions.complete()
+    // this.subscriptions$.next()
+    // this.subscriptions$.complete()
   }
 }

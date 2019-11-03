@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
-import { Observable } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
+import { takeUntil } from 'rxjs/operators'
+
+import { Customer } from '../../shared/models/customer.model'
+import { Membership } from '../../shared/models/membership.model'
 
 @Component({
   selector: 'app-memberships-entry',
@@ -8,15 +13,23 @@ import { Observable } from 'rxjs'
   styleUrls: ['./memberships-entry.component.scss']
 })
 export class MembershipsEntryComponent implements OnInit {
-  private membershipsDoc: AngularFirestoreCollection
-  public memberships: Observable<any>
+  public memberships: Membership[]
+  public customer: Customer
+
+  private membershipsCol: AngularFirestoreCollection<Membership>
+  private memberships$: Observable<Membership[]>
+  private subscriptions$: Subject<void> = new Subject<void>()
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.membershipsDoc = this.firestore.collection('memberships')
-    this.memberships = this.membershipsDoc.valueChanges()
+    this.membershipsCol = this.firestore.collection<Membership>('memberships')
+    this.memberships$ = this.membershipsCol.valueChanges()
+    this.customer = this.route.parent.snapshot.data.customer
+
+
   }
 }

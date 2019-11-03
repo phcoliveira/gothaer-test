@@ -1,71 +1,69 @@
-<ng-container *ngIf="customer">
-  <div fxLayout="column" fxFlexFill fxLayoutAlign="start start">
-    <mat-toolbar color="primary" fxFlex="0 0 auto">
-      <span>Gothaer Digital</span>
-    
-      <span fxFlex="1 1 auto"></span>
-    
-      <span>Sign out</span>
-    </mat-toolbar>
+<div fxLayout="column" fxFlexFill fxLayoutAlign="start start">
+  <mat-toolbar color="primary" fxFlex="0 0 auto">
+    <span>Gothaer Digital</span>
   
-    <mat-sidenav-container fxFlex="1 1 auto" fxFlexFill>
-      <mat-sidenav
-        #sidenav
-        mode="side"
-        opened
-        [fixedInViewport]="false"
-        [fixedTopGap]="0"
-        [fixedBottomGap]="0"
-      >
-        <div fxLayout="row" fxLayoutAlign="center start">
-          <p>
-            <strong>Welcome {{ customer.name }}</strong>
-          </p>
-
-        </div>
-
-        <mat-list>
-          <mat-list-item>
-            <a
-              mat-list-item
-              [routerLink]="['/customers/dashboard']"
-              [queryParams]="{ view: null }"
-              queryParamsHandling="merge"
-            >
-              My subscription
-            </a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <a
-              mat-list-item
-              [routerLink]="['/customers/dashboard']"
-              [queryParams]="{ view: 'my-contracts' }"
-              queryParamsHandling="merge"
-            >
-              My insurances
-            </a>
-          </mat-list-item>
-
-          <mat-list-item>
-            <a
-              mat-list-item
-              [routerLink]="['/customers/dashboard']"
-              [queryParams]="{ view: 'new-contracts' }"
-              queryParamsHandling="merge"
-            >
-              New Insurances
-            </a>
-          </mat-list-item>
-        </mat-list>
-      </mat-sidenav>
+    <span fxFlex="1 1 auto"></span>
   
-      <mat-sidenav-content>
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div>
-</ng-container>
+    <span>Sign out</span>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlex="1 1 auto" fxFlexFill>
+    <mat-sidenav
+      #sidenav
+      mode="side"
+      opened
+      [fixedInViewport]="false"
+      [fixedTopGap]="0"
+      [fixedBottomGap]="0"
+    >
+      <div fxLayout="row" fxLayoutAlign="center start">
+        <p>
+          <strong>Welcome {{ customer.name }}</strong>
+        </p>
+
+      </div>
+
+      <mat-list>
+        <mat-list-item>
+          <a
+            mat-list-item
+            [routerLink]="['/customers/dashboard']"
+            [queryParams]="{ view: null }"
+            queryParamsHandling="merge"
+          >
+            My subscription
+          </a>
+        </mat-list-item>
+
+        <mat-list-item>
+          <a
+            mat-list-item
+            [routerLink]="['/customers/dashboard']"
+            [queryParams]="{ view: 'my-contracts' }"
+            queryParamsHandling="merge"
+          >
+            My insurances
+          </a>
+        </mat-list-item>
+
+        <mat-list-item>
+          <a
+            mat-list-item
+            [routerLink]="['/customers/dashboard']"
+            [queryParams]="{ view: 'new-contracts' }"
+            queryParamsHandling="merge"
+          >
+            New Insurances
+          </a>
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 
 <!-- <div
   fxLayout="row"
