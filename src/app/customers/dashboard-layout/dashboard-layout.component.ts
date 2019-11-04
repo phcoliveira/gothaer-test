@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router'
 import { AngularFireAuth } from '@angular/fire/auth'
 
-import { Customer } from '../customer.model'
+import { Customer } from '../../shared/models/customer.model'
 
 @Component({
   selector: 'customers-dashboard-layout',
