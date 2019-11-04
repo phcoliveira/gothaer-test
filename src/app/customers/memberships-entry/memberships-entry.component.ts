@@ -10,7 +10,7 @@ import { Product } from '../../shared/models/product.model'
 import { Customer } from '../../shared/models/customer.model'
 
 @Component({
-  selector: 'app-memberships-entry',
+  selector: 'customers-memberships-entry',
   templateUrl: './memberships-entry.component.html',
   styleUrls: ['./memberships-entry.component.scss']
 })
@@ -27,7 +27,7 @@ export class MembershipsEntryComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.customer = this.route.parent.snapshot.data.customer
 
     this.membershipService.memberships$
@@ -48,7 +48,7 @@ export class MembershipsEntryComponent implements OnInit, OnDestroy {
     this.subscriptions$.complete()
   }
 
-  get sortedMemberships() {
+  get sortedMemberships(): Membership[] {
     const { memberships } = this;
 
     if (Array.isArray(memberships)) {
@@ -58,7 +58,7 @@ export class MembershipsEntryComponent implements OnInit, OnDestroy {
     }
   }
 
-  getAvailableProductsForMembership(membership: Membership) {
+  getAvailableProductsForMembership(membership: Membership): Membership[] {
     const { products } = this;
 
     if (Array.isArray(products)) {

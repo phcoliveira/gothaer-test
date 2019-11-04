@@ -11,11 +11,13 @@ import { MatListModule } from '@angular/material/list'
 import { MatCardModule } from '@angular/material/card'
 
 import { SharedModule } from '../shared/shared.module'
-import { CustomersRoutes, entries, resolvers } from './customers.routes'
+import { CustomersRoutes, entries, resolvers } from './customers.routes';
+import { ProfileEntryComponent } from './profile-entry/profile-entry.component'
 
 @NgModule({
   declarations: [
     ...entries,
+    ProfileEntryComponent,
   ],
   imports: [
     CommonModule,

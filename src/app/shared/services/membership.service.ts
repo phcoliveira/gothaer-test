@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core'
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -21,5 +25,17 @@ export class MembershipService {
     return this.membershipsCol.valueChanges().pipe(
       map((data) => data.map((obj) => new Membership(obj)))
     )
+  }
+
+  getMembershipDoc(id: string): AngularFirestoreDocument<object> {
+    return this.firestore.doc<object>(`memberships/${id}`)
+  }
+
+  getMembership(id: string): Observable<Membership> {
+    return this.getMembershipDoc(id)
+      .valueChanges()
+      .pipe(
+        map((obj) => new Membership(obj))
+      )
   }
 }

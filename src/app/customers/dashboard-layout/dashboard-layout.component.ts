@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
+import { AngularFireAuth } from '@angular/fire/auth'
+
 // import { Subject } from 'rxjs'
 // import { takeUntil } from 'rxjs/operators'
 
@@ -18,7 +20,9 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 
   constructor(
     // private heroService: CustomerService,
-    private route: ActivatedRoute
+    private fireauth: AngularFireAuth,
+    private route: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -35,5 +39,11 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // this.subscriptions$.next()
     // this.subscriptions$.complete()
+  }
+
+  signOut(): void {
+    this.fireauth.auth.signOut().then(() => {
+      this.router.navigate(['/authentication'])
+    })
   }
 }

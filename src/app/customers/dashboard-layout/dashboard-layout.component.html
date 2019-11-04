@@ -4,7 +4,7 @@
   
     <span fxFlex="1 1 auto"></span>
   
-    <span>Sign out</span>
+    <a (click)="signOut()">Sign out</a>
   </mat-toolbar>
 
   <mat-sidenav-container fxFlex="1 1 auto" fxFlexFill>
@@ -27,18 +27,18 @@
         <mat-list-item>
           <a
             mat-list-item
-            [routerLink]="['/customers/dashboard/memberships']"
+            [routerLink]="['/customers/dashboard/profile']"
           >
-            Memberships
+            My profile
           </a>
         </mat-list-item>
 
         <mat-list-item>
           <a
             mat-list-item
-            [routerLink]="['/customers/dashboard']"
+            [routerLink]="['/customers/dashboard/memberships']"
           >
-            My insurances
+            Memberships
           </a>
         </mat-list-item>
       </mat-list>

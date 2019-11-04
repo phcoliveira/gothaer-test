@@ -1,4 +1,4 @@
-interface Price {
+export interface Price {
   currency: string,
   label: string,
   maxAge: number,
@@ -11,7 +11,7 @@ export class Product {
   level: number
   type: string
   title: string
-  [prices: number]: Price
+  prices: Price[]
 
   constructor(obj: object) {
     Object.assign(this, obj)

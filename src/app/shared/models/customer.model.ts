@@ -3,7 +3,7 @@ export class Customer {
   membership_type: string
   password: string
   age: string
-  [selected_insurances: number]: string
+  selected_insurances: string[]
 
   constructor(obj: object) {
     Object.assign(this, obj)

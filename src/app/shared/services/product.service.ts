@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core'
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
+import {
+  AngularFirestore,
+  AngularFirestoreDocument,
+  AngularFirestoreCollection
+} from '@angular/fire/firestore'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -21,5 +25,17 @@ export class ProductService {
     return this.productsCol.valueChanges().pipe(
       map((data) => data.map((obj) => new Product(obj)))
     )
+  }
+
+  getProductDoc(id: string): AngularFirestoreDocument<object> {
+    return this.firestore.doc<object>(`products/${id}`)
+  }
+
+  getProduct(id: string): Observable<Product> {
+    return this.getProductDoc(id)
+      .valueChanges()
+      .pipe(
+        map((obj) => new Product(obj))
+      )
   }
 }

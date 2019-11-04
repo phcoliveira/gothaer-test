@@ -1,0 +1,29 @@
+<p>My profile</p>
+
+<div
+  fxFlexLayout="row wrap"
+  fxLayoutAlign="space-evenly stretch"
+>
+  <ng-container *ngIf="selectedInsurances.length; else noInsurance">
+    <mat-card
+      *ngFor="let insurance$ of selectedInsurances"
+      fxFlex.xs="1 1 100%"
+      fxFlex.gt-xs="1 1 30%"
+    >
+      <ng-container *ngIf="(insurance$ | async) as insurance">
+        <mat-card-title>{{insurance.title}}</mat-card-title>
+
+        <mat-card-content *ngIf="getPrice(customer, insurance) as price">
+          <p><strong>{{price.label}}</strong></p>
+          <p>Price: {{price.price}} {{price.currency}}</p>
+        </mat-card-content>
+      </ng-container>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #noInsurance>
+    <mat-card fxFlex="1 1 60%">
+      <mat-card-title>You do not have any insurance</mat-card-title>
+    </mat-card>
+  </ng-template>
+</div>
