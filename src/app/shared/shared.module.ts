@@ -2,6 +2,8 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { CustomerService } from './services/customer.service'
+import { MembershipService } from './services/membership.service'
+import { ProductService } from './services/product.service'
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        CustomerService
+        CustomerService,
+        MembershipService,
+        ProductService,
       ]
     }
   }

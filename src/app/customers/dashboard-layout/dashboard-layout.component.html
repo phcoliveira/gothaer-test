@@ -27,11 +27,9 @@
         <mat-list-item>
           <a
             mat-list-item
-            [routerLink]="['/customers/dashboard']"
-            [queryParams]="{ view: null }"
-            queryParamsHandling="merge"
+            [routerLink]="['/customers/dashboard/memberships']"
           >
-            My subscription
+            Memberships
           </a>
         </mat-list-item>
 
@@ -39,21 +37,8 @@
           <a
             mat-list-item
             [routerLink]="['/customers/dashboard']"
-            [queryParams]="{ view: 'my-contracts' }"
-            queryParamsHandling="merge"
           >
             My insurances
-          </a>
-        </mat-list-item>
-
-        <mat-list-item>
-          <a
-            mat-list-item
-            [routerLink]="['/customers/dashboard']"
-            [queryParams]="{ view: 'new-contracts' }"
-            queryParamsHandling="merge"
-          >
-            New Insurances
           </a>
         </mat-list-item>
       </mat-list>

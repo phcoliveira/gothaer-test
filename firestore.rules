@@ -9,6 +9,10 @@ service cloud.firestore {
       allow read: if true
     }
 
+    match /products/{product} {
+      allow read: if true
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

@@ -1,7 +1,26 @@
 <p>Our membership plans:</p>
 
-<div fxFlexLayout="rows" fxFlexFill>
-  <mat-card *ngFor="let membership of memberships | async">
-    <mat-card-title>{{ membership.level }}</mat-card-title>
+<div
+  fxFlexLayout="row wrap"
+  fxLayoutAlign="space-evenly stretch"
+>
+  <mat-card
+    *ngFor="let membership of sortedMemberships"
+    fxFlex.xs="1 1 100%"
+    fxFlex.gt-xs="1 1 30%"
+  >
+    <mat-card-title>{{ membership.title }}</mat-card-title>
+
+    <mat-card-content>
+      <p>Available products:</p>
+
+      <mat-list>
+        <mat-list-item
+          *ngFor="let product of getAvailableProductsForMembership(membership)"
+        >
+          {{ product.title }}
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
   </mat-card>
 </div>
