@@ -10,7 +10,6 @@ import { AppComponent } from './app.component'
 import { SharedModule } from './shared/shared.module'
 import { AuthenticationModule } from './authentication/authentication.module'
 import { CustomersModule } from './customers/customers.module';
-import { MembershipsModule } from './memberships/memberships.module'
   
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { MembershipsModule } from './memberships/memberships.module'
     NoopAnimationsModule,
     AuthenticationModule,
     CustomersModule,
-    MembershipsModule,
   ],
   bootstrap: [AppComponent]
 })
